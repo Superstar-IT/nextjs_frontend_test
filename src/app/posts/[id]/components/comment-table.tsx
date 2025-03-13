@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   ColumnDef,
   flexRender,
@@ -12,7 +12,11 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import axiosInstance from "@/lib/axios-instance";
+
+import { NewCommentForm } from "./new-comment-form";
 
 export interface Comment {
   id: number;
@@ -28,6 +32,7 @@ const fetchCommentByPostId = async (post_id: string): Promise<[Comment]> => {
 };
 
 export function CommentTable({ initialData, postId }: { initialData: [Comment]; postId: string }) {
+  const queryClient = useQueryClient();
   const { data } = useQuery({
     queryKey: ["posts", postId, "comments"],
     queryFn: () => fetchCommentByPostId(postId),
@@ -35,7 +40,16 @@ export function CommentTable({ initialData, postId }: { initialData: [Comment]; 
     enabled: !!postId,
   });
 
+  const [isOpen, setIsOpen] = useState(false);
   const [pageSize, setPageSize] = useState(10);
+
+  const addNewComment = (comment: Comment) => {
+    const lastComment = data.at(-1);
+    comment.id = (lastComment?.id ?? 0) + 1;
+    comment.postId = lastComment?.postId ?? 0;
+    queryClient.setQueryData(["posts", postId, "comments"], (oldData: [Comment]) => [...oldData, comment]);
+    setIsOpen(false);
+  };
 
   const columns: ColumnDef<any>[] = [
     { accessorKey: "id", header: "ID" },
@@ -43,6 +57,7 @@ export function CommentTable({ initialData, postId }: { initialData: [Comment]; 
     { accessorKey: "name", header: "Name" },
     { accessorKey: "body", header: "body" },
   ];
+
   const table = useReactTable({
     data,
     columns,
@@ -56,6 +71,28 @@ export function CommentTable({ initialData, postId }: { initialData: [Comment]; 
 
   return (
     <div className="grid gap-4 p-4">
+      <div className="flex items-center justify-end">
+        <Dialog
+          open={isOpen}
+          onOpenChange={(value) => {
+            setIsOpen(value);
+          }}
+        >
+          <DialogTrigger>
+            <Button variant="outline" onClick={() => setIsOpen(true)}>
+              Add Comment
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Add Comment</DialogTitle>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <NewCommentForm onSubmit={addNewComment} />
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
       <table className="w-full border-collapse border border-gray-300">
         <thead className="">
           {table.getHeaderGroups().map((headerGroup) => (

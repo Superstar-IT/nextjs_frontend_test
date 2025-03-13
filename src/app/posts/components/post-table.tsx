@@ -54,7 +54,6 @@ export function PostTable({ initialData, userId }: { initialData: [Post]; userId
   const posts = useMemo(() => {
     if (!filter) return data;
     const keyword = filter.toLocaleLowerCase();
-    console.log("-----------------------");
     return data.filter((post) => {
       return post.title.toLocaleLowerCase().includes(keyword);
     });
@@ -87,7 +86,6 @@ export function PostTable({ initialData, userId }: { initialData: [Post]; userId
     state: {
       sorting,
     },
-    // onSortingChange: setSorting,
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
   });
