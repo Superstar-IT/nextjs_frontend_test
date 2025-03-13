@@ -36,17 +36,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Architectural decisions
 
-- [x] Why you used Server Components.
+✅ Why you used Server Components.
 
-✅ Default behavior in Next.js App Router (app/ directory)
-✅ Static or Dynamic (can use fetch(), but no client-side interactivity)
-✅ Faster page loads (smaller JavaScript bundle sent to the client)
-✅ Optimized for performance
+- [x] Default behavior in Next.js App Router (app/ directory)
+- [x] Static or Dynamic (can use fetch(), but no client-side interactivity)
+- [x] Faster page loads (smaller JavaScript bundle sent to the client)
+- [x] Optimized for performance
 
-- [x] How you organized your `/app` folder. 
+✅ How you organized your `/app` folder. 
 
-✅ Supports Built-in Layouts, Nested Routing, Streaming, and Suspense
-✅ Uses Server Actions for form handling
+- [x] Supports Built-in Layouts, Nested Routing, Streaming, and Suspense
+- [x] Uses Server Actions for form handling
 
-- [x] How you structured logic with React Query.
-✅ Just used React Query to fetch data
+✅ How you structured logic with React Query.
+- [x] Just used React Query to fetch data
