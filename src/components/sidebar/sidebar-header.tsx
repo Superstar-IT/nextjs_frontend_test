@@ -6,7 +6,7 @@ import { PROJECT_CONFIG } from "@/config/project-config";
 
 export default function SidebarBrandHeader() {
   return (
-    <Link href="/dashboard">
+    <Link href="/">
       <SidebarMenuButton className="pointer-events-none">
         <Logo height="25" width="25" />
         <span className="text-lg font-semibold dark:text-white">{PROJECT_CONFIG.name}</span>

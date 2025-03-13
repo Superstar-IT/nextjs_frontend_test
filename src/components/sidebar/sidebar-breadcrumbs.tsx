@@ -22,7 +22,7 @@ export default function SidebarBreadcrumbs() {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem className="hidden md:block">
-          <BreadcrumbLink href="/dashboard/profile">
+          <BreadcrumbLink href="/">
             <House className="size-4 text-gray-500" />
           </BreadcrumbLink>
         </BreadcrumbItem>
