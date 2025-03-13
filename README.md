@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Test Assessment (Next.js + TypeScript + Shadcn UI)
+
+
+## Context
+
+Create an application with Next.js 14 + React 18 + TypeScript that consumes data from JSONPlaceholder. It’s recommended to use the `/users`, `/posts`, and `/comments` endpoints to display relationships and functionalities like listings, details, and comments. The use of TanStack Query for request management and Next.js 14 Server Components is valued, as long as they are used appropriately.
+
+
+## Features 
+
+- [x] TypeScript, React 18, Next.js 14
+- [x] Tailwind CSS & Shadcn UI for Styling
+- [x] React Query for Data Fetching
+- [x] Use the JSONPlaceholder API
+- [x] Allow filtering the list by name or username
+- [x] Allow sorting posts by title and/or filtering by partial text in the title
+- [x] Paginate the list
+- [x] Implement a simple form to add a comment
+- [x] ESLint for Code Quality
+- [x] Prettier for Code Formatting
+- [x] React Hook Form for Forms
+- [x] Tanstack Tables for Data Display
+- [x] Zod for Schema Validation
 
 ## Getting Started
 
-First, run the development server:
+To set up and run this app locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+
+1. ```git clone https://github.com/Superstar-IT/nextjs_frontend_test.git```
+2. ```npm install```
+3. ```npm run dev```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Architectural decisions
 
-## Learn More
+- [x] Why you used Server Components.
 
-To learn more about Next.js, take a look at the following resources:
+✅ Default behavior in Next.js App Router (app/ directory)
+✅ Static or Dynamic (can use fetch(), but no client-side interactivity)
+✅ Faster page loads (smaller JavaScript bundle sent to the client)
+✅ Optimized for performance
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [x] How you organized your `/app` folder. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+✅ Supports Built-in Layouts, Nested Routing, Streaming, and Suspense
+✅ Uses Server Actions for form handling
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [x] How you structured logic with React Query.
+✅ Just used React Query to fetch data
